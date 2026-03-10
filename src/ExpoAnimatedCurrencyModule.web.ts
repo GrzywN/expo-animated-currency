@@ -12,4 +12,7 @@ class ExpoAnimatedCurrencyModule extends NativeModule<ExpoAnimatedCurrencyModule
   }
 }
 
-export default registerWebModule(ExpoAnimatedCurrencyModule, 'ExpoAnimatedCurrencyModule');
+export default registerWebModule(
+  ExpoAnimatedCurrencyModule,
+  'ExpoAnimatedCurrencyModule'
+);

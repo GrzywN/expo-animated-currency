@@ -2,4 +2,4 @@
 // and on native platforms to ExpoAnimatedCurrencyModule.ts
 export { default } from './ExpoAnimatedCurrencyModule';
 export { default as ExpoAnimatedCurrencyView } from './ExpoAnimatedCurrencyView';
-export * from  './ExpoAnimatedCurrency.types';
+export * from './ExpoAnimatedCurrency.types';
