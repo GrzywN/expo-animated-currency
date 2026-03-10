@@ -4,6 +4,14 @@
   "description": "SwiftUI numeric text animation wrapped as an Expo native module for React Native — a practical bridge between SwiftUI's contentTransition API and the JS world.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "engines": {
+    "node": "*",
+    "npm": "*",
+    "yarn": "please-use-npm",
+    "pnpm": "please-use-npm",
+    "bun": "please-use-npm",
+    "deno": "please-use-npm"
+  },
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",
@@ -28,11 +36,10 @@
   "author": "Karol Binkowski <karolbinkowski3@proton.me> (GrzywN)",
   "license": "MIT",
   "homepage": "https://github.com/GrzywN/expo-animated-currency#readme",
-  "dependencies": {},
   "devDependencies": {
-    "@types/react": "~19.1.1",
-    "expo-module-scripts": "^55.0.2",
-    "expo": "^55.0.5",
+    "@types/react": "19.1.17",
+    "expo": "55.0.5",
+    "expo-module-scripts": "55.0.2",
     "react-native": "0.82.1"
   },
   "peerDependencies": {
