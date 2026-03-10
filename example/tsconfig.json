@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-animated-currency": ["../src/index"],
+      "expo-animated-currency/*": ["../src/*"]
+    }
+  }
+}

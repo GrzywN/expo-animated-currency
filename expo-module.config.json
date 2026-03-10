@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["ExpoAnimatedCurrencyModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.animatedcurrency.ExpoAnimatedCurrencyModule"]
+  }
+}
