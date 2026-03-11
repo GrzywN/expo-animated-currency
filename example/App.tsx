@@ -1,4 +1,4 @@
-import { AnimatedCurrencyView } from 'expo-animated-currency';
+import { AnimatedCurrency } from 'expo-animated-currency';
 import { useState } from 'react';
 import { Button, ScrollView, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -12,7 +12,7 @@ export default function App() {
         <ScrollView style={styles.container}>
           <Text style={styles.header}>Animated Currency</Text>
           <Group name="View">
-            <AnimatedCurrencyView
+            <AnimatedCurrency
               value={value}
               currency="USD"
               locale="en-US"

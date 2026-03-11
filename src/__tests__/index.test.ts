@@ -4,7 +4,7 @@ jest.mock('expo', () => ({
   requireNativeView: jest.fn().mockReturnValue(jest.fn().mockReturnValue(null)),
 }));
 
-import DefaultExport, { AnimatedCurrencyView } from '../index';
+import DefaultExport, { AnimatedCurrency } from '../index';
 
 describe('index exports', () => {
   it('exports default (native module)', () => {
@@ -12,7 +12,7 @@ describe('index exports', () => {
     expect(DefaultExport).toBe(requireNativeModule.mock.results[0].value);
   });
 
-  it('exports AnimatedCurrencyView as a function', () => {
-    expect(typeof AnimatedCurrencyView).toBe('function');
+  it('exports AnimatedCurrency as a function', () => {
+    expect(typeof AnimatedCurrency).toBe('function');
   });
 });

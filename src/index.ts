@@ -1,5 +1,5 @@
 export { default } from './animated-currency.module';
-export { default as AnimatedCurrencyView } from './animated-currency.view';
+export { default as AnimatedCurrency } from './animated-currency.view';
 export type {
   CurrencyCode,
   LocaleIdentifier,
