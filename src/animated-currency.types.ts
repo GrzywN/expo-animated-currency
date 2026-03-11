@@ -1,4 +1,4 @@
-import type { StyleProp, ViewStyle } from 'react-native';
+import type { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export type AnimatedCurrencyModuleEvents = Record<string, never>;
 
@@ -82,5 +82,8 @@ export interface AnimatedCurrencyProps {
   value: number;
   currency?: CurrencyCode;
   locale?: LocaleIdentifier;
+  fontSize?: number;
+  fontWeight?: TextStyle['fontWeight'];
+  color?: ColorValue;
   style?: StyleProp<ViewStyle>;
 }

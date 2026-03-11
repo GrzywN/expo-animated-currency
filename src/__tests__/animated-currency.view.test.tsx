@@ -54,4 +54,34 @@ describe('AnimatedCurrency (iOS)', () => {
       ).mock.calls[0][0]
     ).toMatchObject({ style });
   });
+
+  it('forwards fontSize prop to native view', () => {
+    render(<AnimatedCurrency value={0} fontSize={24} />);
+    expect(
+      (
+        jest.requireMock('expo').requireNativeView.mock.results[0]
+          .value as jest.Mock
+      ).mock.calls[0][0]
+    ).toMatchObject({ fontSize: 24 });
+  });
+
+  it('forwards fontWeight prop to native view', () => {
+    render(<AnimatedCurrency value={0} fontWeight="300" />);
+    expect(
+      (
+        jest.requireMock('expo').requireNativeView.mock.results[0]
+          .value as jest.Mock
+      ).mock.calls[0][0]
+    ).toMatchObject({ fontWeight: '300' });
+  });
+
+  it('forwards color prop to native view', () => {
+    render(<AnimatedCurrency value={0} color="#FF0000" />);
+    expect(
+      (
+        jest.requireMock('expo').requireNativeView.mock.results[0]
+          .value as jest.Mock
+      ).mock.calls[0][0]
+    ).toMatchObject({ color: '#FF0000' });
+  });
 });

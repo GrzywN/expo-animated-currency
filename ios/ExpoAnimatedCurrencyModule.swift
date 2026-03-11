@@ -14,6 +14,15 @@ public class ExpoAnimatedCurrencyModule: Module {
             Prop("locale") { (view: ExpoAnimatedCurrencyView, locale: String) in
                 view.setLocale(locale)
             }
+            Prop("fontSize") { (view: ExpoAnimatedCurrencyView, fontSize: Double) in
+                view.setFontSize(fontSize)
+            }
+            Prop("fontWeight") { (view: ExpoAnimatedCurrencyView, fontWeight: String) in
+                view.setFontWeight(fontWeight)
+            }
+            Prop("color") { (view: ExpoAnimatedCurrencyView, color: UIColor) in
+                view.setColor(color)
+            }
         }
     }
 }
