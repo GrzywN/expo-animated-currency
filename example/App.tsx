@@ -1,40 +1,31 @@
-import { useEvent } from 'expo';
-import ExpoAnimatedCurrency, { ExpoAnimatedCurrencyView } from 'expo-animated-currency';
-import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { AnimatedCurrencyView } from 'expo-animated-currency';
+import { useState } from 'react';
+import { Button, ScrollView, Text, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
-  const onChangePayload = useEvent(ExpoAnimatedCurrency, 'onChange');
+  const [value, setValue] = useState(0);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.container}>
-        <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{ExpoAnimatedCurrency.PI}</Text>
-        </Group>
-        <Group name="Functions">
-          <Text>{ExpoAnimatedCurrency.hello()}</Text>
-        </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await ExpoAnimatedCurrency.setValueAsync('Hello from JS!');
-            }}
-          />
-        </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
-        </Group>
-        <Group name="Views">
-          <ExpoAnimatedCurrencyView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
-        </Group>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.container}>
+          <Text style={styles.header}>Animated Currency</Text>
+          <Group name="View">
+            <AnimatedCurrencyView
+              value={value}
+              currency="USD"
+              locale="en-US"
+              style={styles.view}
+            />
+            <Button
+              title="+$11.99"
+              onPress={() => setValue((v) => v + 11.99)}
+            />
+          </Group>
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
