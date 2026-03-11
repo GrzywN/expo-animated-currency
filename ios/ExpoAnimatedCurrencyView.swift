@@ -18,28 +18,46 @@ private struct CurrencyDisplayView: View {
         formatter.numberStyle = .currency
         formatter.locale = Locale(identifier: state.locale)
         formatter.currencyCode = state.currencyCode
-        return formatter.string(from: state.value as NSNumber) ?? ""
+
+        if let result = formatter.string(from: state.value as NSNumber), !result.isEmpty {
+            return result
+        }
+
+        #if DEBUG
+        print("[expo-animated-currency] Unknown currency code '\(state.currencyCode)' or locale '\(state.locale)' — falling back to decimal formatting.")
+        #endif
+
+        let fallback = NumberFormatter()
+        fallback.numberStyle = .decimal
+        fallback.locale = Locale(identifier: state.locale)
+        fallback.minimumFractionDigits = 2
+        fallback.maximumFractionDigits = 2
+
+        let number = fallback.string(from: state.value as NSNumber) ?? "\(state.value)"
+
+        return "\(state.currencyCode) \(number)"
     }
 
     private var resolvedFont: Font {
         if let size = state.fontSize {
             return .system(size: size)
         }
+
         return .largeTitle
     }
 
     private var resolvedFontWeight: Font.Weight {
         switch state.fontWeight {
-        case "100", "ultralight": return .ultraLight
-        case "200", "thin": return .thin
-        case "300", "light": return .light
-        case "400", "normal", "regular": return .regular
-        case "500", "medium": return .medium
-        case "600", "semibold": return .semibold
-        case "700", "bold": return .bold
-        case "800", "heavy", "extrabold": return .heavy
-        case "900", "black": return .black
-        default: return .bold
+            case "100", "ultralight": return .ultraLight
+            case "200", "thin": return .thin
+            case "300", "light": return .light
+            case "400", "normal", "regular": return .regular
+            case "500", "medium": return .medium
+            case "600", "semibold": return .semibold
+            case "700", "bold": return .bold
+            case "800", "heavy", "extrabold": return .heavy
+            case "900", "black": return .black
+            default: return .bold
         }
     }
 
@@ -47,6 +65,7 @@ private struct CurrencyDisplayView: View {
         if let uiColor = state.color {
             return Color(uiColor)
         }
+
         return Color.primary
     }
 
@@ -55,6 +74,13 @@ private struct CurrencyDisplayView: View {
             if #available(iOS 17.0, *) {
                 Text(formattedValue)
                     .contentTransition(.numericText(value: state.value))
+                    .animation(.default, value: state.value)
+                    .font(resolvedFont)
+                    .fontWeight(resolvedFontWeight)
+                    .foregroundStyle(resolvedColor)
+            } else if #available(iOS 16.0, *) {
+                Text(formattedValue)
+                    .contentTransition(.numericText())
                     .animation(.default, value: state.value)
                     .font(resolvedFont)
                     .fontWeight(resolvedFontWeight)
