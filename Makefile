@@ -4,8 +4,11 @@ setup:
 dev:
 	@npm run start
 
+dev-android:
+	@npm --prefix example run android
+
 dev-ios:
-	@npm run ios
+	@npm --prefix example run ios
 
 format:
 	npm run format
